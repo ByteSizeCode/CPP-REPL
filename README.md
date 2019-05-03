@@ -3,4 +3,4 @@ A REPL is defined as: "an interactive programming tool which loops, continually 
 
 Example Usage:
 
-<img src="Screenshot/Screenshot.png" alt="drawing" width="460" height="700"/>
+<img src="Screenshot/Screenshot.png" alt="drawing" width="300" height="400"/>
