@@ -9,6 +9,11 @@
 
 import Foundation
 
+//Mark: Constants
+let HELP = "h"
+let QUIT = "q"
+var continueREPL = true
+
 //Declare function for shell calls
 func shell(_ command: String) -> String {
     let task = Process()
@@ -29,9 +34,12 @@ func shell(_ command: String) -> String {
 shell("rm record.txt")
 shell("echo '' >> record.txt")
 
-while (true){
+//Guide the user
+print("REPL interactive programming tool. Type \(HELP) for help. Quit with \(QUIT).")
+
+while (continueREPL){
     //Get line of input from user
-    print(":",terminator:"")
+    print(" >: ",terminator:"")
     let input = readLine()
     
     //Inputting del removes last line
@@ -47,8 +55,16 @@ while (true){
     shell("echo 'int main()\n{\n'  >> cpprepl.cpp")
     
     //Add input to record file
-    if (input != nil){
+    if (input != nil && input != HELP && input != QUIT){
         shell("echo '\(input!)' >> record.txt")
+    }
+    else {
+        if (input == HELP) {
+            print(#"    This program is a C++ REPL, or: "an interactive programming tool which loops, continually reading user input, evaluating the input, and printing the value of the input or a description of the state change the input caused." Type e.x. cout << "Hello World!" << endl;"#)
+        }
+        if (input == QUIT) {
+            continueREPL = false;
+        }
     }
     
     //Add all previous lines of code
